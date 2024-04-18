@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Django | Home</title>
+
+        <style>
+            table, th, td {
+                border: 1px solid #000;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to Django!</h1>
+        <hr>
+
+        <table>
+            <tr>
+                <th>S. No.</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Location</th>
+                <th>Can Vote</th>
+            </tr>
+            {% for Candidate in Candidates %}
+
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{Candidate.name}}</td>
+                <td>{{Candidate.age}}</td>
+                <td>{{Candidate.geo}}</td>
+                <td
+                    {% if Candidate.age >= 18 %} style="background:yellowgreen"
+                    {% else %} style="background:red" {% endif %}
+                >
+                    {% if Candidate.age >= 18 %}
+                    👍
+                    {% else %}
+                    👎
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% endfor %}
+        </table>
+        <hr>
+
+        <p>
+            {% if "Strawberry" in Veggies %}
+                Yes, Strawberry is avaiable in the list.
+            {% else %}
+                Strawberry is not a veggie.
+            {% endif %}
+        </p>
+    
+    </body>
+</html>
